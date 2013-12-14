@@ -11,17 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214162656) do
+ActiveRecord::Schema.define(version: 20131214170153) do
 
   create_table "crews", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "captain_id"
   end
 
-  add_index "crews", ["captain_id"], name: "index_crews_on_captain_id"
+  create_table "crews_sailors", force: true do |t|
+    t.integer "crew_id"
+    t.integer "sailor_id"
+  end
 
   create_table "sailors", force: true do |t|
     t.string   "email",                  default: "", null: false
