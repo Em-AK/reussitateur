@@ -1,0 +1,2 @@
+class Captain < Sailor
+end

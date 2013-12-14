@@ -1,0 +1,2 @@
+class Moussaillon < Sailor
+end
