@@ -4,6 +4,7 @@ Reussitateur
 Projet : Donner à l’enfant un moyen de se rendre compte de ses réussites et du parcours réalisé pour y arriver.
 
 [Pad de lancement du projet](http://piratepad.net/check-in-educatif)
+[Pad du HackSense - 14/15 décembre 2013](http://piratepad.net/hacksense-education)
 
 ## Todo
 
