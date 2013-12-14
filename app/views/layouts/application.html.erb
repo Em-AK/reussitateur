@@ -9,11 +9,11 @@
 <body>
   <div id="user_nav">
     <% if sailor_signed_in? %>
-      Signed in as <%= current_sailor.email %>. Not you?
-      <%= link_to "Leave the boat", destroy_sailor_session_path, method: :delete %>
+      Embarqué en tant que <%= current_sailor.email %>. 
+      <%= link_to "Quitter le navire", destroy_sailor_session_path, method: :delete %>
     <% else %>
-      <%= link_to "Enroll", new_sailor_registration_path %> or
-      <%= link_to "Get onboard", new_sailor_session_path %>
+      <%= link_to "S'enroller", new_sailor_registration_path %> ou
+      <%= link_to "Embarquer", new_sailor_session_path %>
     <% end %>
   </div>
 

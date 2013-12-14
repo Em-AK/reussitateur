@@ -1,2 +1,8 @@
-<h1>Crew#index</h1>
-<p>Find me in app/views/crew/index.html.erb</p>
+<h1>Equipages</h1>
+
+<% @crews.each do |crew| %>
+  <strong><%= crew.title %></strong>
+  <p><%= crew.description %></p>
+<% end %>
+
+<%= link_to "Nouvel équipage", new_crew_path %>

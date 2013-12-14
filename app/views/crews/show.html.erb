@@ -1,2 +1,7 @@
-<h1>Crew#show</h1>
-<p>Find me in app/views/crew/show.html.erb</p>
+<h1><%= @crew.title %></h1>
+<p><%= @crew.description %></p>
+
+<% # if current_sailor.type == captain %>
+<%= link_to "Remanier", edit_crew_path(@crew) %> |
+<%= link_to "Supprimer", @crew, method: :delete, data: { confirm: 'Êtes-vous certain?'} %>
+<% # end %>
