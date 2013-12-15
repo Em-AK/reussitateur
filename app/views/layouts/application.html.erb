@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Reussitateur</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div id="user_nav">
-    <% if sailor_signed_in? %>
-      Embarqué en tant que <%= current_sailor.email %>. 
-      <%= link_to "Quitter le navire", destroy_sailor_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "S'enroller", new_sailor_registration_path %> ou
-      <%= link_to "Embarquer", new_sailor_session_path %>
-    <% end %>
-  </div>
+<%= render 'layouts/header' %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <body>
+    <div class="row">
+      <div class="columns large-12">
+        <div id="user_nav">
+          <% if sailor_signed_in? %>
+            Embarqué en tant que <%= current_sailor.email %>. 
+            <%= link_to "Quitter le navire", destroy_sailor_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "S'enroller", new_sailor_registration_path %> ou
+            <%= link_to "Embarquer", new_sailor_session_path %>
+          <% end %>
+        </div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 
-<%= yield %>
-
-</body>
+        <%= yield %>
+      </div>
+    </div>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
