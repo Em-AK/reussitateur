@@ -1,5 +1,10 @@
 <h1><%= @crew.title %></h1>
 <p><%= @crew.description %></p>
+<ul>
+  <% @crew.sailors.each do |sailor| %>
+  <li><%= sailor.email %></li>
+  <% end %>
+</ul>
 
 <% # if current_sailor.type == captain %>
 <%= link_to "Remanier", edit_crew_path(@crew) %> |

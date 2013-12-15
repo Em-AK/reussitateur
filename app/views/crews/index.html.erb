@@ -3,6 +3,11 @@
 <% @crews.each do |crew| %>
   <strong><%= crew.title %></strong>
   <p><%= crew.description %></p>
+  <ul>
+    <% crew.sailors.each do |sailor| %>
+    <li><%= sailor.email %></li>
+  <% end %>
+</ul>
 <% end %>
 
 <%= link_to "Nouvel équipage", new_crew_path %>

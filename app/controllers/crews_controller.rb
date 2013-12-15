@@ -14,7 +14,7 @@ class CrewsController < ApplicationController
 
   def create
     @crew = Crew.new(crew_params)
-    if @crew.save
+    if associate_sailors && @crew.save
       redirect_to @crew, notice: "L'équipage a bien été créé."
     else
       render action: 'new'
@@ -25,7 +25,7 @@ class CrewsController < ApplicationController
   end
 
   def update
-    if @crew.update(crew_params)
+    if associate_sailors && @crew.update(crew_params)
       redirect_to @crew, notice: "L'équipage à bien été mis à jour."
     else
       render action: 'edit'
@@ -41,9 +41,17 @@ class CrewsController < ApplicationController
 
     def set_crew
       @crew = Crew.find(params[:id])
+      @sailors_ids = @crew.sailors.map { |s| s.id }
+    end
+
+    # associate sailors to the crew in the joint table
+    def associate_sailors
+      params[:crew][:sailor_ids].each do |email|
+        @crew.sailors << Sailor.find_by_email(email) if email != ""
+      end
     end
 
     def crew_params
-      params.require(:crew).permit(:title, :description)
+      params.require(:crew).permit(:title, :description )
     end
 end

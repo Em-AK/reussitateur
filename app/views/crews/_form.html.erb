@@ -1,13 +1,20 @@
-<%= form_for @crew do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit "Enregistrer" %>
-  </p>
+<%= semantic_form_for @crew do |f| %>
+  <%= f.inputs :title, :description %>
+  <ul>
+  <% @crew.sailors.each do |sailor| %>
+    <li>
+      <%= sailor.email %>
+    </li>
+  <% end %>
+  </ul>
+  <%= f.input :sailors, :as => :select, :collection => Sailor.all.map { |s| s.email } %>
+
+<!--   <%= f.semantic_fields_for :sailors do |sailors| %>
+    <%= sailors.inputs :first_name, :last_name, :name => "Author" %>
+  <% end %> -->
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
 <% end %>
